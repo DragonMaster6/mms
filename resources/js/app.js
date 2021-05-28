@@ -13,6 +13,6 @@ const app = new Vue({
     el: "#app",
     router,
     mounted() {
-        this.$router.push({name:"login"});
+        this.$router.replace({name:"login"});
     }
 })

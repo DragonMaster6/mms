@@ -1,6 +1,6 @@
 <template>
   <div>
-      <slot></slot>
+      Successfully logged in as the user...
   </div>
 </template>
 
