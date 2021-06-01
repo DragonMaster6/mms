@@ -1959,6 +1959,16 @@ __webpack_require__.r(__webpack_exports__);
   methods: {
     login: function login() {
       console.log("Logging In.....");
+      axios.post("/api/login", {
+        email: this.username,
+        password: this.password
+      }).then(function (success) {
+        console.log(success.data);
+      })["catch"](function (error) {
+        if (error.response) error = error.response;
+        console.error("Login failed");
+        console.error(error);
+      });
     }
   }
 });
@@ -19706,7 +19716,7 @@ var render = function() {
   var _c = _vm._self._c || _h
   return _c("basic-layout", [
     _c("div", [
-      _c("span", [_vm._v(" Login ")]),
+      _c("span", [_vm._v(" Login to your MMS account ")]),
       _vm._v(" "),
       _c(
         "form",
