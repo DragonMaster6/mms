@@ -2,8 +2,12 @@
     <basic-layout>
         <div>
             <span> Login to your MMS account </span>
+            <div v-if="err_msg">
+                <span v-for="(error, index) in err_msg" :key="index">
+                    {{ error }}
+                </span>
+            </div>
             <form @submit.prevent="login">
-                <div v-if="err_msg"> {{ err_msg }} </div>
                 <label for="username"> Username </label>
                 <input type="text" id="username" v-model="username">
                 <label for="password"> Password </label>
@@ -23,7 +27,7 @@ export default {
     },
     data() {
         return {
-            err_msg: '',
+            err_msg: [],
             username: '',
             password: '',
         }
@@ -44,6 +48,12 @@ export default {
 
                 console.error("Login failed");
                 console.error(error);
+
+                // Retrieve the error messages
+                _.each(error.data.errors, (detail, field) => {
+                    console.log(detail);
+                    this.err_msg.push(detail.join(". "));
+                });
             })
         }
     }

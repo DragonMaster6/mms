@@ -12,14 +12,14 @@ class AuthController extends Controller {
      */
     public function login(Request $request) {
         // Validate the response
-        $user_input = $request->validate([
+        $request->validate([
             'email' => "required|string",
             'password' => "required|string",
         ]);
 
         // Attempt the authentication
         if (Auth::attempt($request->only('email','password'))) {
-            return response()->json(["msg" => "successfully logged in"]);
+            return response()->json(Auth::user());
         } else {
             return response()->json(["msg" => "Access Denied"], 401);
         }
