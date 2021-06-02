@@ -114,4 +114,18 @@ return [
 
     'password_timeout' => 10800,
 
+    /*
+    |--------------------------------------------------------------------------
+    | Roles Configuration
+    |--------------------------------------------------------------------------
+    |
+    | Here is where all the unique roles go with their associated permissions.
+    | Add new permissions to existing roles, create new roles, etc.
+    |
+    */
+
+    'roles' => [
+        
+    ],
+
 ];
