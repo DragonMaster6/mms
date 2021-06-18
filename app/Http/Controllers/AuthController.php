@@ -21,7 +21,7 @@ class AuthController extends Controller {
         if (Auth::attempt($request->only('email','password'))) {
             return response()->json(Auth::user());
         } else {
-            return response()->json(["msg" => "Access Denied"], 401);
+            return response()->json(["errors" => ["Incorrect Username and/or Password"]], 401);
         }
     }
 }

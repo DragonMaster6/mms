@@ -1,29 +1,39 @@
 <template>
     <basic-layout>
-        <div>
-            <span> Login to your MMS account </span>
-            <div v-if="err_msg">
-                <span v-for="(error, index) in err_msg" :key="index">
-                    {{ error }}
-                </span>
+        <div class="border-2 border-gray-200 rounded-lg px-8 pb-8">
+            <div class="bold text-3xl font-serif my-4">
+                Login to your MMS account 
             </div>
-            <form @submit.prevent="login">
-                <label for="username"> Username </label>
-                <input type="text" id="username" v-model="username">
-                <label for="password"> Password </label>
-                <input type="password" id="password" v-model="password">
-                <input type="submit" value="Login">
+            <div v-if="err_msg">
+                <m-alert type="bg-red-300" v-for="(error, index) in err_msg"
+                        :key="index">
+                    {{ error }}
+                </m-alert>
+                <!-- <span v-for="(error, index) in err_msg" :key="index">
+                    {{ error }}
+                </span> -->
+            </div>
+            <form class="flex flex-col"
+                    @submit.prevent="login">
+                <m-input class="mb-4" label="Username" v-model="username"></m-input>
+                <m-input class="mb-4" label="Password" type="password" v-model="password"></m-input>
+                <input type="submit" value="Login"
+                        class="bg-green-400 rounded cursor-pointer py-2">
             </form>
         </div>
     </basic-layout>
 </template>
 
 <script>
+import MAlert from "../../../components/alerts/alert"
 import BasicLayout from "../../../components/layouts/basic"
+import MInput from "../../../components/inputs/input"
 
 export default {
     components: {
+        MAlert,
         BasicLayout,
+        MInput,
     },
     data() {
         return {
@@ -34,6 +44,7 @@ export default {
     },
     methods: {
         login() {
+            this.err_msg = [];
             console.log("Logging In.....");
             axios.post("/api/login", {
                 email: this.username,
@@ -41,6 +52,7 @@ export default {
             })
             .then(success => {
                 console.log(success.data);
+                // Change to the user's profile or go to the dashboard
             })
             .catch(error => {
                 if (error.response)
@@ -52,7 +64,10 @@ export default {
                 // Retrieve the error messages
                 _.each(error.data.errors, (detail, field) => {
                     console.log(detail);
-                    this.err_msg.push(detail.join(". "));
+                    if (typeof detail == "object")
+                        this.err_msg.push(detail.join(". "));
+                    else
+                        this.err_msg.push(detail);
                 });
             })
         }
