@@ -9,6 +9,6 @@ export default {
     routes: [
         {path: "/login", name: "login", component: LoginPage },
         
-        {path: "/user", name: "userProfile", compontent: UserPage}, 
+        {path: "/user", name: "userProfile", component: UserPage}, 
     ]
 }

@@ -29,7 +29,5 @@ const app = new Vue({
     el: "#app",
     router,
     store,
-    mounted() {
-        this.$router.replace({name:"login"});
-    }
+    template: "<router-view></router-view>",
 })

@@ -1,12 +1,17 @@
 <template>
   <div>
-      Successfully logged in as the user...
+    Successfully logged in {{ user.username }} ({{ user.id }})
   </div>
 </template>
 
 <script>
-export default {
+import {mapGetters} from "vuex"
 
+export default {
+  computed: {
+    ...mapGetters({user: "getUser"}),
+
+  }
 }
 </script>
 

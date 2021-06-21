@@ -25,6 +25,8 @@
 </template>
 
 <script>
+import {mapMutations} from "vuex"
+
 import MAlert from "../../../components/alerts/alert"
 import BasicLayout from "../../../components/layouts/basic"
 import MInput from "../../../components/inputs/input"
@@ -43,6 +45,7 @@ export default {
         }
     },
     methods: {
+        ...mapMutations(["setUser"]),
         login() {
             this.err_msg = [];
             console.log("Logging In.....");
@@ -53,6 +56,11 @@ export default {
             .then(success => {
                 console.log(success.data);
                 // Change to the user's profile or go to the dashboard
+                this.setUser({
+                    id: success.data.id,
+                    username: success.data.name,
+                });
+                this.$router.push({name: "userProfile"});
             })
             .catch(error => {
                 if (error.response)
