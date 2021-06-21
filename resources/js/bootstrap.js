@@ -10,6 +10,18 @@ window.axios = require('axios');
 
 window.axios.defaults.headers.common['X-Requested-With'] = 'XMLHttpRequest';
 
+///////////////////////
+// Prototype Changes //
+///////////////////////
+
+// Change how the Storage and localStorage stores variables
+Storage.prototype.getObject = function(key) {
+    return JSON.parse(this.getItem(key));
+}
+Storage.prototype.setObject = function(key, value) {
+    this.setItem(key, JSON.stringify(value));
+}
+
 /**
  * Echo exposes an expressive API for subscribing to channels and listening
  * for events that are broadcast by Laravel. Echo and event broadcasting
