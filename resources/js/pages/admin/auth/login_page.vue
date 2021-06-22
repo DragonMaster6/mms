@@ -20,13 +20,12 @@
                 <input type="submit" value="Login"
                         class="bg-green-400 rounded cursor-pointer py-2">
             </form>
-            {{ getUser }}
         </div>
     </basic-layout>
 </template>
 
 <script>
-import {mapGetters, mapMutations} from "vuex"
+import {mapState, mapGetters, mapMutations} from "vuex"
 
 import MAlert from "../../../components/alerts/alert"
 import BasicLayout from "../../../components/layouts/basic"
@@ -46,10 +45,10 @@ export default {
         }
     },
     computed: {
-        ...mapGetters(['getUser', 'test']),
+        ...mapState('users', ['user']),
     },
     methods: {
-        ...mapMutations(["setUser", "setTest"]),
+        ...mapMutations('users', ["setUser"]),
         login() {
             this.err_msg = [];
             console.log("Logging In.....");
@@ -64,12 +63,7 @@ export default {
                     id: success.data.id,
                     username: success.data.name,
                 });
-                console.log("After Login: ");
-                console.log(this.getUser);
-
-                this.setTest("testing");
-                console.log(this.test);
-                // this.$router.push({name: "userProfile"});
+                this.$router.push({name: "userProfile"});
             })
             .catch(error => {
                 if (error.response)
