@@ -2,16 +2,16 @@ require('./bootstrap');
 
 import Vue from "vue"
 import Vuex from "vuex"
-import VueRouter from "vue-router"
+// import VueRouter from "vue-router"
 
 import AppRoutes from "./router.js"
 import AppStore from "./store.js"
 
-Vue.use(Vuex);
-Vue.use(VueRouter);
+// Vue.use(Vuex);
+// Vue.use(VueRouter);
 
-const router = new VueRouter(AppRoutes);
-const store = new Vuex.Store(AppStore);
+// const router = new VueRouter(AppRoutes);
+// const store = new Vuex.Store(AppStore);
 
 ////////////////
 // Directives //
@@ -27,7 +27,7 @@ Vue.prototype.$can = permission => store.getters.hasPermission(permission);
 
 const app = new Vue({
     el: "#app",
-    router,
-    store,
+    router: AppRoutes,
+    store: AppStore,
     template: "<router-view></router-view>",
 })
