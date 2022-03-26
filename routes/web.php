@@ -21,3 +21,5 @@ use Inertia\Inertia;
 Route::get('/', function() {
   return Inertia::render('auth/login');
 });
+
+Route::post('/login', [App\Http\Controllers\Auth\LoginController::class, 'login']);
