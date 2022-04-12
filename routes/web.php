@@ -18,8 +18,17 @@ use Inertia\Inertia;
 //     return view('welcome');
 // });
 
-Route::get('/', function() {
+Route::get('/login', function() {
   return Inertia::render('auth/login');
 });
 
-Route::post('/login', [App\Http\Controllers\Auth\LoginController::class, 'login']);
+Route::post('/login', [App\Http\Controllers\Auth\LoginController::class, 'login'])
+  ->name('auth.login');
+
+
+// Authenticated user Routes
+Route::middleware('auth')->group(function() {
+  Route::get('/dashboard', function() { 
+    return Inertia::render('dashboard');
+  })->name('dashboard');
+});

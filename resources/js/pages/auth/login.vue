@@ -2,6 +2,10 @@
   import { useForm } from "@inertiajs/inertia-vue3"
   import { ref, reactive } from 'vue'
 
+  const props = defineProps({
+    errors: Object,
+  })
+
   const name = ref('Ben Matson')
   const form = useForm({
     username: '',
@@ -9,8 +13,8 @@
   })
 
   function login() {
-      console.log('Logging in the user')
-    }
+    console.log('Logging in the user')
+  }
 
 //  export default {
 //    setup: () => {
@@ -26,10 +30,17 @@
       Image goes here
     </div>
     <div>
+      <div id="login-msg" v-if="errors">
+        <ul>
+          <li v-for="(error, index) in errors" :key="index">
+            {{ error }}
+          </li>
+        </ul>
+      </div>
       <form @submit.prevent="form.post('/login')">
         <div>
           <label for="username"> Username </label>
-          <input type="text" id="username" v-model="form.username">
+          <input type="text" id="username" name="username" v-model="form.username">
           <small v-if="form.errors.username"> {{ form.errors.username }} </small>
         </div>
         <div>
@@ -38,7 +49,7 @@
           <small v-if="form.errors.secret"> {{ form.errors.secret }} </small>
         </div>
         <div>
-          <button type="submit"> Login </button>
+          <button type="submit" id="login-btn"> Login </button>
           <button> Register </button>
         </div>
       </form>
