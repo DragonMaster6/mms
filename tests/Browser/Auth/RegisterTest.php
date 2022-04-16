@@ -13,7 +13,7 @@ class RegisterTest extends DuskTestCase
 {
   use DatabaseMigrations;
   /**
-   * @group auth
+   * @group auth_register
    * Tests the happy path of creating a user 
    *
    * @return void
@@ -37,7 +37,7 @@ class RegisterTest extends DuskTestCase
   }
 
   /**
-   * @group auth 
+   * @group auth_register
    * Unsure that emails are indeed unique
    *
    * @return void 

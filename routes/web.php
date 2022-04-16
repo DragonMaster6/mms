@@ -20,10 +20,14 @@ use Inertia\Inertia;
 
 Route::get('/login', function() {
   return Inertia::render('auth/login');
-});
+})->name('login-page');
 
 Route::post('/login', [App\Http\Controllers\Auth\LoginController::class, 'login'])
   ->name('auth.login');
+
+Route::get('/register', function() {
+  return Inertia::render('auth/register');
+})->name('register-page');
 
 
 // Authenticated user Routes
