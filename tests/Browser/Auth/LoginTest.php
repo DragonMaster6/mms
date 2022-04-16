@@ -26,8 +26,7 @@ class LoginTest extends DuskTestCase {
    *
    * @return void
    */
-  public function testLogUserIn()
-  {
+  public function testLogUserIn() {
   $this->browse(function (Browser $browser) {
     $browser->visit(new Login())
       ->loginWith($this->user->email, 'password')
@@ -52,13 +51,4 @@ class LoginTest extends DuskTestCase {
     });
   }
 
-  /**
-   * @group auth 
-   * Test registering a user up for the site
-   *
-   * @return void 
-   */ 
-  public function testRegisterNewUser() {
-
-  }
 }
