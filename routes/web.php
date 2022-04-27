@@ -17,6 +17,7 @@ use Inertia\Inertia;
 // Route::get('/', function () {
 //     return view('welcome');
 // });
+Route::redirect('/', '/login');
 
 Route::get('/login', function() {
   return Inertia::render('auth/login');
@@ -25,9 +26,15 @@ Route::get('/login', function() {
 Route::post('/login', [App\Http\Controllers\Auth\LoginController::class, 'login'])
   ->name('auth.login');
 
+Route::get('/logout', [App\Http\Controllers\Auth\LoginController::class, 'logout'])
+  ->name('auth.logout');
+
 Route::get('/register', function() {
   return Inertia::render('auth/register');
 })->name('register-page');
+
+Route::post('/register', [App\Http\Controllers\Auth\LoginController::class, 'register'])
+  ->name('auth.register');
 
 
 // Authenticated user Routes

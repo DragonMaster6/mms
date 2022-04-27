@@ -61,9 +61,9 @@
     </div>
     <div class="flex flex-col mb-4">
       <label for="pass-confirm"> Confirm Password </label>
-      <input type="password" id="pass-confirm" v-model="form.password_confirm">
-      <small class="color-red-600" v-if="errors.confirm">
-        {{ errors.confirm }}
+      <input type="password" id="pass-confirm" v-model="form.pass_confirm">
+      <small class="color-red-600" v-if="errors.pass_confirm">
+        {{ errors.pass_confirm }}
       </small>
     </div>
     <div class="flex justify-between">
