@@ -42,4 +42,12 @@ Route::middleware('auth')->group(function() {
   Route::get('/dashboard', function() { 
     return Inertia::render('dashboard');
   })->name('dashboard');
+
+  // Ledger Routes 
+  Route::controller(App\Http\Controllers\LedgerController::class)
+    ->prefix('/ledger')
+    ->name('ledger.')
+    ->group(function() {
+    Route::get('/', 'index')->name('page');
+  });
 });
