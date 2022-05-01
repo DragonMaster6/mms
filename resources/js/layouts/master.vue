@@ -7,6 +7,9 @@
 <div>
   <ul>
     <li>
+      <a :href="route('dashboard')"> Dashboard </a>
+    </li>
+    <li>
       <a :href="route('ledger.page')"> Ledgers </a>
     </li>
   </ul>
