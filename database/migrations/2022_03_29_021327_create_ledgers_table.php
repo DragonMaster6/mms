@@ -14,7 +14,10 @@ return new class extends Migration {
     Schema::create('ledgers', function (Blueprint $table) {
       $table->id();
       $table->timestamps();
-      $table->foreignId('created_by')->constrained('users', 'id')->onDelete('cascade');
+      $table->foreignId('user_id')
+        ->constrained()
+        ->onDelete('cascade')
+        ->onUpdate('cascade');
       $table->string('name');
     });
   }

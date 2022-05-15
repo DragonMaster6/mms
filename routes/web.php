@@ -49,5 +49,6 @@ Route::middleware('auth')->group(function() {
     ->name('ledger.')
     ->group(function() {
     Route::get('/', 'index')->name('page');
+    Route::post('/create', 'store')->name('create');
   });
 });
