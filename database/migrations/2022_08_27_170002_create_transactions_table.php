@@ -15,6 +15,10 @@ return new class extends Migration
     {
         Schema::create('transactions', function (Blueprint $table) {
             $table->id();
+            $table->foreignId('section_id')
+              ->constrained()
+              ->cascadeOnUpdate()
+              ->cascadeOnDelete();
             $table->string('title')->comment('What this transaction represents');
             $table->unsignedInteger('value')->comment('Value is in cents');
             $table->dateTime('date')->comment('When the transaction transpired on Bank');

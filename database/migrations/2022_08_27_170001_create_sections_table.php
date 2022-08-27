@@ -15,6 +15,10 @@ return new class extends Migration
     {
         Schema::create('sections', function (Blueprint $table) {
             $table->id();
+            $table->foreignId('ledger_id')
+              ->constrained()
+              ->cascadeOnUpdate()
+              ->cascadeonDelete();
             $table->string('title')->comment("The name of section");
             $table->unsignedInteger('budget')->comment("Monetary value stored as cents");
             $table->enum('type', ['expense', 'income']);
