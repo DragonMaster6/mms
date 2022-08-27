@@ -19,6 +19,7 @@ interface FinanceInterface {
    * Deletes a given transaction
    *
    * @param Transaction $transaction
+   * @throws \Exception
    * @return void
    */
   public function deleteTransaction(Transaction $transaction): void;
