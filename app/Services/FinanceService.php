@@ -15,4 +15,16 @@ class FinanceService implements FinanceInterface {
     return Transaction::create($values);
   }
 
+  /**
+   * @inheritdoc
+   */
+  public function updateTransaction(Transaction $transaction, $values): void {
+    try {
+      $transaction->fill($values)->save();
+    }
+    catch (\Exception $e) {
+      throw new \Exception("Unable to save Transaction $transaction->id: $e->getMessage()");
+    }
+  }
+
 }

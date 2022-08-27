@@ -14,5 +14,15 @@ interface FinanceInterface {
    * @return Transaction
    */
   public function createTransaction(array $values): Transaction;
+
+  /**
+   * Modifies a transaction instance
+   *
+   * @param Transaction $transaction
+   * @param array $values
+   * @throws \Exception
+   * @return void
+   */
+  public function updateTransaction(Transaction $transaction, $values): void;
   
 }
