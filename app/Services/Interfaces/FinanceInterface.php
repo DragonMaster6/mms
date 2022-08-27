@@ -16,6 +16,14 @@ interface FinanceInterface {
   public function createTransaction(array $values): Transaction;
 
   /**
+   * Deletes a given transaction
+   *
+   * @param Transaction $transaction
+   * @return void
+   */
+  public function deleteTransaction(Transaction $transaction): void;
+
+  /**
    * Modifies a transaction instance
    *
    * @param Transaction $transaction

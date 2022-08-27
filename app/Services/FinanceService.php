@@ -18,6 +18,18 @@ class FinanceService implements FinanceInterface {
   /**
    * @inheritdoc
    */
+  public function deleteTransaction(Transaction $transaction): void {
+    try {
+      $transaction->delete();
+    }
+    catch (\Exception $e) {
+      throw new \Exception("Unable to delete transaction $transaction->id: $e->getMessage()");
+    }
+  }
+
+  /**
+   * @inheritdoc
+   */
   public function updateTransaction(Transaction $transaction, $values): void {
     try {
       $transaction->fill($values)->save();
