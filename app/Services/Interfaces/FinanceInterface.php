@@ -26,6 +26,15 @@ interface FinanceInterface {
   public function createSection(Ledger $ledger, array $values): Section;
 
   /**
+   * Creates a transaction and attaches it to a section
+   *
+   * @param Section $section
+   * @param array $values
+   * @return Transaction
+   */
+  public function createTransaction(Section $section, array $values): Transaction;
+
+  /**
    * Deletes a ledger and all of it's sections and transactions
    *
    * @param Ledger $ledger

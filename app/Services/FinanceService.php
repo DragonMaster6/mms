@@ -27,6 +27,13 @@ class FinanceService implements FinanceInterface {
   /**
    * @inheritdoc
    */
+  public function createTransaction(Section $section, array $values): Transaction {
+    return $section->transactions()->create($values);
+  }
+
+  /**
+   * @inheritdoc
+   */
   public function deleteLedger(Ledger $ledger): void {
     try {
       $ledger->delete();
