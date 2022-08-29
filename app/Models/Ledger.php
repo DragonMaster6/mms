@@ -10,4 +10,14 @@ class Ledger extends Model
     use HasFactory;
 
     protected $guarded = [];
+
+    //////////////////////////////
+    // Relationship Definitions //
+    //////////////////////////////
+    /**
+     * Points to all the sections within this ledger
+     */
+    public function sections() {
+      return $this->hasMany(Section::class);
+    }
 }
