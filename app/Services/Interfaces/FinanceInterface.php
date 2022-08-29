@@ -4,34 +4,31 @@
  */
 namespace App\Services\Interfaces;
 
+use App\Models\Ledger;
 use App\Models\Transaction;
 
 interface FinanceInterface {
   /**
-   * Creates a single Transaction instance
+   * Creates a new ledger to hold sections of transactions
    *
    * @param array $values
-   * @return Transaction
    */
-  public function createTransaction(array $values): Transaction;
+  public function createLedger(array $values): Ledger;
 
   /**
-   * Deletes a given transaction
+   * Deletes a ledger and all of it's sections and transactions
    *
-   * @param Transaction $transaction
-   * @throws \Exception
+   * @param Ledger $ledger
    * @return void
    */
-  public function deleteTransaction(Transaction $transaction): void;
+  public function deleteLedger(Ledger $ledger): void;
 
   /**
-   * Modifies a transaction instance
+   * Updates a ledger's values 
    *
-   * @param Transaction $transaction
+   * @param Ledger $ledger
    * @param array $values
-   * @throws \Exception
    * @return void
    */
-  public function updateTransaction(Transaction $transaction, $values): void;
-  
+  public function updateLedger(Ledger $ledger, array $values): void;
 }

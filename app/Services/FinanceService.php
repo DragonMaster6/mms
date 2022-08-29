@@ -4,6 +4,7 @@
  */
 namespace App\Services;
 
+use App\Models\Ledger;
 use App\Models\Transaction;
 use App\Services\Interfaces\FinanceInterface;
 
@@ -11,32 +12,31 @@ class FinanceService implements FinanceInterface {
   /**
    * @inheritdoc
    */
-  public function createTransaction(array $values): Transaction {
-    return Transaction::create($values);
+  public function createLedger(array $values): Ledger {
+    return Ledger::create($values);
   }
 
   /**
    * @inheritdoc
    */
-  public function deleteTransaction(Transaction $transaction): void {
+  public function deleteLedger(Ledger $ledger): void {
     try {
-      $transaction->delete();
+      $ledger->delete();
     }
     catch (\Exception $e) {
-      throw new \Exception("Unable to delete transaction $transaction->id: $e->getMessage()");
+      throw new \Exception("Unable to delete ledger ($ledger->id): $e->getMessage()");
     }
   }
 
   /**
    * @inheritdoc
    */
-  public function updateTransaction(Transaction $transaction, $values): void {
+  public function updateLedger(Ledger $ledger, array $values): void {
     try {
-      $transaction->fill($values)->save();
+      $ledger->fill($values)->save();
     }
-    catch (\Exception $e) {
-      throw new \Exception("Unable to save Transaction $transaction->id: $e->getMessage()");
+    catch(\Exception $e) {
+      throw new \Exception("Unable to update Ledger($ledger->id): $e->getMessage()");
     }
   }
-
 }
