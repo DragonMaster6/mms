@@ -26,4 +26,14 @@ class Section extends Model {
         set: fn ($value) => $value * 100
       );
     }
+
+    //////////////////////////////
+    // Relationship Definitions //
+    //////////////////////////////
+    /**
+     * Returns a list of all the transactions that reside in a Section
+     */
+    public function transactions() {
+      return $this->hasMany(Transaction::class);
+    }
 }
