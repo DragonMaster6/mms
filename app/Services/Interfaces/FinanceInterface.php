@@ -5,6 +5,7 @@
 namespace App\Services\Interfaces;
 
 use App\Models\Ledger;
+use App\Models\Section;
 use App\Models\Transaction;
 
 interface FinanceInterface {
@@ -14,6 +15,15 @@ interface FinanceInterface {
    * @param array $values
    */
   public function createLedger(array $values): Ledger;
+
+  /**
+   * Creates a section and attaches to a ledger
+   *
+   * @param Ledger $ledger - The Ledger to attach to
+   * @param array $values - The Section values to be stored
+   * @return Section
+   */
+  public function createSection(Ledger $ledger, array $values): Section;
 
   /**
    * Deletes a ledger and all of it's sections and transactions
