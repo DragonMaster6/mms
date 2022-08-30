@@ -50,4 +50,13 @@ interface FinanceInterface {
    * @return void
    */
   public function updateLedger(Ledger $ledger, array $values): void;
+
+  /**
+   * Updates a section's values
+   *
+   * @param Section $section
+   * @param array $values
+   * @return void
+   */
+  public function updateSection(Section $section, array $values): void;
 }

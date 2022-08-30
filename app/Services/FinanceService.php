@@ -54,4 +54,16 @@ class FinanceService implements FinanceInterface {
       throw new \Exception("Unable to update Ledger($ledger->id): $e->getMessage()");
     }
   }
+
+  /**
+   * @inheritdoc
+   */
+  public function updateSection(Section $section, array $values): void {
+    try {
+      $section->fill($values)->save();
+    }
+    catch(\Exception $e) {
+      throw new \Exception("Unable to update Section ($section->id): $e->getMessage()");
+    }
+  }
 }
