@@ -7,6 +7,7 @@ namespace App\Services;
 use App\Models\Ledger;
 use App\Models\Section;
 use App\Models\Transaction;
+use App\Services\Interfaces\arary;
 use App\Services\Interfaces\FinanceInterface;
 
 class FinanceService implements FinanceInterface {
@@ -64,6 +65,18 @@ class FinanceService implements FinanceInterface {
     }
     catch(\Exception $e) {
       throw new \Exception("Unable to update Section ($section->id): $e->getMessage()");
+    }
+  }
+
+  /**
+   * @inheritdoc
+   */
+  public function updateTransaction(Transaction $transaction, array $values): void {
+    try {
+      $transaction->fill($values)->save();
+    }
+    catch (\Exception $e) {
+      throw new \Exception("Unable to update Transaction($transaction->id): $e->getMessage()");
     }
   }
 }

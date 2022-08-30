@@ -59,4 +59,13 @@ interface FinanceInterface {
    * @return void
    */
   public function updateSection(Section $section, array $values): void;
+
+  /**
+   * Updates a transaction's values
+   *
+   * @param Transaction $transaction
+   * @param array $values
+   * @return void
+   */
+  public function updateTransaction(Transaction $transaction, array $values): void;
 }
