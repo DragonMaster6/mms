@@ -14,46 +14,11 @@ use Inertia\Inertia;
 |
 */
 
-// Route::get('/', function () {
-//     return view('welcome');
-// });
-Route::get('/ledgers', fn() => Inertia::render('ledgers/index'))
-  ->name('ledgers');
-// Route::get('/ledgers', function() {
-//   return Inertia::render('ledgers/index');
-// })->name('ledgers');
+Route::controller(App\Http\Controllers\LedgerController::class)
+  ->prefix('/ledgers')
+  ->name('ledgers.')
+  ->group(function() {
+    Route::get('/', 'index')->name('index');
+  });
+
 Route::redirect('/', '/ledgers');
-
-// Route::get('/login', function() {
-//   return Inertia::render('auth/login');
-// })->name('login-page');
-
-// Route::post('/login', [App\Http\Controllers\Auth\LoginController::class, 'login'])
-//   ->name('auth.login');
-
-// Route::get('/logout', [App\Http\Controllers\Auth\LoginController::class, 'logout'])
-//   ->name('auth.logout');
-
-// Route::get('/register', function() {
-//   return Inertia::render('auth/register');
-// })->name('register-page');
-
-// Route::post('/register', [App\Http\Controllers\Auth\LoginController::class, 'register'])
-//   ->name('auth.register');
-
-
-// // Authenticated user Routes
-// Route::middleware('auth')->group(function() {
-//   Route::get('/dashboard', function() { 
-//     return Inertia::render('dashboard');
-//   })->name('dashboard');
-
-//   // Ledger Routes 
-//   Route::controller(App\Http\Controllers\LedgerController::class)
-//     ->prefix('/ledger')
-//     ->name('ledger.')
-//     ->group(function() {
-//     Route::get('/', 'index')->name('page');
-//     Route::post('/create', 'store')->name('create');
-//   });
-// });
