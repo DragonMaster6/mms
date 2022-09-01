@@ -19,4 +19,10 @@ class LedgerController extends Controller {
       'ledgers' => Ledger::get(),
     ]);
   }
+
+  public function show(Request $request, Ledger $ledger) {
+    return Inertia::render('ledgers/show', [
+      'ledger' => $ledger,
+    ]);
+  }
 }

@@ -19,6 +19,7 @@ Route::controller(App\Http\Controllers\LedgerController::class)
   ->name('ledgers.')
   ->group(function() {
     Route::get('/', 'index')->name('index');
+    Route::get('/{ledger}', 'show')->name('show');
   });
 
 Route::redirect('/', '/ledgers');
