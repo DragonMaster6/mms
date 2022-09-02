@@ -21,6 +21,7 @@ class LedgerController extends Controller {
   }
 
   public function show(Request $request, Ledger $ledger) {
+    $ledger->load('sections.transactions');
     return Inertia::render('ledgers/show', [
       'ledger' => $ledger,
     ]);

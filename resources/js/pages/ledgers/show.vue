@@ -1,7 +1,19 @@
 <template>
   <DashboardLayout>
     <template v-slot:content>
-      This is the {{ ledger.title }} ledger
+      This is the {{ ledger.title }} ledger <br>
+      <section v-for="section in ledger.sections" :key="'section-'+section.id">
+        <h2> {{ section.title }}: ${{ (section.budget - section.transactions.reduce((carry, value) => (carry + value.value), 0)) }} </h2>
+        <h3> Budget: ${{ section.budget }} </h3>
+        <ul>
+          <li v-for="trans in section.transactions" :key="'trans-'+trans.id">
+            {{ trans.date }} {{ trans.title }}: ${{ trans.value }}
+          </li>
+        </ul>
+      </section>
+      <section>
+        <button> Create Section </button>
+      </section>
     </template>
   </DashboardLayout>
 </template>
