@@ -27,6 +27,7 @@ Route::controller(App\Http\Controllers\LedgerController::class)
       ->name('sections.')
       ->group(function() {
         Route::get('/create', 'create')->name('create');
+        Route::post('/create', 'store')->name('store');
       });
   });
 
