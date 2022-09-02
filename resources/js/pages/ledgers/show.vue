@@ -12,13 +12,14 @@
         </ul>
       </section>
       <section>
-        <button> Create Section </button>
+        <Link :href="'/ledgers/'+ledger.id+'/sections/create'"> Create Section </Link>
       </section>
     </template>
   </DashboardLayout>
 </template>
 
 <script setup>
+import { Link } from '@inertiajs/inertia-vue3'
 import DashboardLayout from '../../layouts/dashboard.vue'
 import { defineProps } from 'vue';
 

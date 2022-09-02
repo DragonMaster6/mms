@@ -20,6 +20,14 @@ Route::controller(App\Http\Controllers\LedgerController::class)
   ->group(function() {
     Route::get('/', 'index')->name('index');
     Route::get('/{ledger}', 'show')->name('show');
+
+    // Sections
+    Route::controller(App\Http\Controllers\SectionController::class)
+      ->prefix('/{ledger}/sections')
+      ->name('sections.')
+      ->group(function() {
+        Route::get('/create', 'create')->name('create');
+      });
   });
 
 Route::redirect('/', '/ledgers');
